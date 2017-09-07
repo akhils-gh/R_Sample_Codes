@@ -1,0 +1,52 @@
+---
+title: "R Basics"
+author: "Akhil"
+date: "7 September 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r}
+wt = c(60,72,78, 67, 75, 82,85)
+mean_wt = sum(wt)/length(wt)
+sd_wt = (sum((wt - mean_wt)^2)/(length(wt) - 1))^0.5
+print(paste0('Values Calculated: ', "mean_wt = ", round(mean_wt, 0), " sd_wt = ", round(sd_wt,0)))
+paste0("Values from formula: ", " mean_wt = ", round(mean(wt),0), " sd_wt = ", round(sd(wt),0))
+```
+
+
+```{r}
+ht = (wt +100)/100
+ideal_wt = 22.5*(ht)^2
+plot(x = ht, ideal_wt, xlab = "Height", ylab = "Ideal height", col = "red", pch = 20)
+```
+
+```{r}
+rep(1:4, 8)
+rep(c("hi", "bye"), c(2,3))
+
+```
+
+
+# categorical Data
+
+```{r}
+gender = c("M","F","M","F", "F", "M","F")
+names(gender) = c("Bob","Susan","Jim","Mary","Jane","Tim","Nicole")
+plot(factor(gender), ht)
+```
+
+```{r}
+df = data.frame(gender, ht, ideal_wt, stringsAsFactors = F)
+print(df)
+print(colnames(df))
+print(rownames(df))
+print(attributes(df))
+```
+
